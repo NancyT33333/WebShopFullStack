@@ -1,0 +1,27 @@
+<mvc:View controllerName="ru.teamidea.odatapractice.WebShop.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{Name}" number="{ path: 'Price', formatter: '.formatter.currencyValue' }" numberUnit="{Currency}"></ObjectHeader>
+		
+		</semantic:content>
+		<semantic:editAction>
+		
+		</semantic:editAction>
+		
+			<semantic:customHeaderContent>
+			<Button text="B корзину"></Button>
+		</semantic:customHeaderContent>
+		<semantic:customFooterContent>
+			<Button text="Добавить в корзину"></Button>
+		</semantic:customFooterContent>
+		<semantic:sendEmailAction>
+	
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			
+		</semantic:shareInJamAction>
+
+	</semantic:DetailPage>
+</mvc:View>
