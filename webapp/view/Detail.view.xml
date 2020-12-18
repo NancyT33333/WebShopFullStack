@@ -4,17 +4,23 @@
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<ObjectHeader id="objectHeader" title="{Name}" number="{ path: 'Price', formatter: '.formatter.currencyValue' }" numberUnit="{Currency}"></ObjectHeader>
-		
-		</semantic:content>
+			<VBox width="50%" class="sapUiResponsivePadding">	
+				<HBox>
+				<Input></Input>
+					<Button text="Добавить в корзину"></Button>
+				</HBox>
+			</VBox>
+			</semantic:content>
 		<semantic:editAction>
 		
 		</semantic:editAction>
 		
 			<semantic:customHeaderContent>
-			<Button text="B корзину"></Button>
+			<Button text="B корзину" icon="sap-icon://cart"></Button>
 		</semantic:customHeaderContent>
 		<semantic:customFooterContent>
-			<Button text="Добавить в корзину"></Button>
+			<Button text="Удалить из корзины"></Button>
+		
 		</semantic:customFooterContent>
 		<semantic:sendEmailAction>
 	

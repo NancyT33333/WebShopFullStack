@@ -22,14 +22,12 @@
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Name}"
+					<ObjectListItem icon="{Picture}" type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Name}"
 						number="{ path: 'Price', formatter: '.formatter.currencyValue' }" numberUnit="{Currency}"></ObjectListItem>
 				</items>
 			</List>
 		</semantic:content>
-		<semantic:addAction>
-			<semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd"/>
-		</semantic:addAction>
+	
 		<semantic:sort>
 			<semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" change="onSort">
 				<core:Item id="masterSort1" key="Name" text="{i18n>masterSort1}"/>

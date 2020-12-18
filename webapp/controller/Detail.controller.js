@@ -92,6 +92,11 @@ sap.ui.define([
 				}
 			});
 		},
+		
+		onGoToShopCart: function () {
+		
+
+		},
 
 		/**
 		 * Event handler for binding change event

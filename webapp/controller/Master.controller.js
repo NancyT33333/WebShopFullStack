@@ -266,16 +266,7 @@ sap.ui.define([
 			}
 		},
 
-		/**
-		 * Event handler  (attached declaratively) called when the add button in the master view is pressed. it opens the create view.
-		 * @public
-		 */
-		onAdd: function () {
-			this.getModel("appView").setProperty("/addEnabled", false);
-			this.getRouter().getTargets().display("create");
-
-		},
-
+	
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */

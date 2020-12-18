@@ -111,7 +111,16 @@
 						"master",
 						"object"
 					]
-				}
+				}, 
+				{
+					"pattern": "Cart",
+					"name": "cart",
+					"target": [
+						"master",
+						"cart"
+					]
+				} 
+				
 			],
 			"targets": {
 				"master": {
@@ -125,8 +134,9 @@
 					"viewId": "detail",
 					"viewLevel": 2
 				},
-				"create": {
-					"viewName": "CreateEntity",
+			
+				"cart": {
+					"viewName": "Cart",
 					"viewLevel": 2
 				},
 				"detailObjectNotFound": {
