@@ -16,7 +16,9 @@ sap.ui.define([
 				busy: true,
 				delay: 0,
 				itemToSelect: null,
-				addEnabled: false
+				addEnabled: false,
+				tempOrder: []
+				
 
 			});
 			this.setModel(oViewModel, "appView");

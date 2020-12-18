@@ -1,0 +1,67 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m" xmlns:semantic="sap.m.semantic" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" controllerName="ru.teamidea.odatapractice.WebShop.controller.ShoppingCart">
+	<semantic:DetailPage id="idDetailPageShoppingCart" showNavButton="true" navButtonPress="onNavToDetail" title="{i18n>cart}">
+		<semantic:content>
+			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel1">
+				<headerToolbar>
+					<Toolbar id="toolbar2">
+						<Title text="{i18n>itemsInCart}"/>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<List id="list0" items="{path: 'appView>/tempOrder'}">
+						<items>
+							<InputListItem label="{ProductId}" id="item2">
+								<content>
+									<Input width="100%" id="input0" description="{i18n>quantity}"/>
+								</content>
+							</InputListItem>
+						</items>
+					</List>
+				</content>
+			</Panel>
+			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel0">
+				<headerToolbar>
+					<Toolbar id="toolbar1">
+						<Title text="{i18n>orderDetails}"/>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<form:Form editable="true" id="form0">
+						<form:formContainers>
+							<form:FormContainer id="container0">
+								<form:formElements>
+									<form:FormElement label="{i18n>custName}" id="element0">
+										<form:fields>
+											<Input width="100%" id="input1"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custAdress}" id="element1">
+										<form:fields>
+											<Input width="100%" id="input2"/>
+										</form:fields>
+									</form:FormElement>
+								</form:formElements>
+							</form:FormContainer>
+						</form:formContainers>
+						<form:layout>
+							<form:ResponsiveGridLayout id="layout0"/>
+						</form:layout>
+					</form:Form>
+					<Bar id="bar4">
+						<contentRight>
+							<Button xmlns="sap.m" id="button1" text="{i18n>btnConfirmOrder}" icon="sap-icon://accept" type="Accept"/>
+							<Button xmlns="sap.m" text="{i18n>btnCancelOrder}" id="button2" type="Reject"/>
+						</contentRight>
+					</Bar>
+				</content>
+			</Panel>
+		</semantic:content>
+		<semantic:mainAction>
+			<semantic:MainAction id="action1" text="{i18n>btnPostOrder}"/>
+		</semantic:mainAction>
+	</semantic:DetailPage>
+</mvc:View>

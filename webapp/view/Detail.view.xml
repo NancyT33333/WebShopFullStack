@@ -1,33 +1,32 @@
-<mvc:View controllerName="ru.teamidea.odatapractice.WebShop.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
-		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="ru.teamidea.odatapractice.WebShop.controller.Detail">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Name}" number="{ path: 'Price', formatter: '.formatter.currencyValue' }" numberUnit="{Currency}"></ObjectHeader>
-			<VBox width="50%" class="sapUiResponsivePadding">	
-				<HBox>
-				<Input></Input>
-					<Button text="Добавить в корзину"></Button>
-				</HBox>
-			</VBox>
+			<ObjectHeader id="objectHeader" title="{Name}" number="{ path: 'Price', formatter: '.formatter.currencyValue' }" numberUnit="{Currency}"/>
+			<form:Form editable="true" id="form0">
+			    <form:formContainers>
+			        <form:FormContainer id="container1" title="{i18n>addToCart}">
+			            <form:formElements>
+			                <form:FormElement id="element1" label="{i18n>quantity}">
+			                    <form:fields>
+			                        <Input width="100%" id="input2"/>
+			                        <Button xmlns="sap.m" id="button3" icon="sap-icon://cart-3" iconFirst="false" press="onBtnAddToCart" width="50%" text="{i18n>add}"/>
+			                    </form:fields>
+			                </form:FormElement>
+			            </form:formElements>
+			        </form:FormContainer>
+			    </form:formContainers>
+			    <form:layout>
+			        <form:ResponsiveGridLayout id="layout0"/>
+			    </form:layout></form:Form>
 			</semantic:content>
-		<semantic:editAction>
-		
-		</semantic:editAction>
-		
+	
 			<semantic:customHeaderContent>
-			<Button text="B корзину" icon="sap-icon://cart"></Button>
+			<Button icon="sap-icon://cart" enabled="{= ${appView>/tempOrder}.length > 0 }" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'Cart'\}\}\}" text="{i18n>toCart}"/>
 		</semantic:customHeaderContent>
 		<semantic:customFooterContent>
-			<Button text="Удалить из корзины"></Button>
+			<Button text="{i18n>removeFromCart}"/>
 		
 		</semantic:customFooterContent>
-		<semantic:sendEmailAction>
-	
-		</semantic:sendEmailAction>
-		<semantic:shareInJamAction>
-			
-		</semantic:shareInJamAction>
-
+		
 	</semantic:DetailPage>
 </mvc:View>

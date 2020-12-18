@@ -111,16 +111,16 @@
 						"master",
 						"object"
 					]
-				}, 
+				},
 				{
+					"name": "Cart",
 					"pattern": "Cart",
-					"name": "cart",
 					"target": [
 						"master",
 						"cart"
+							
 					]
-				} 
-				
+				}
 			],
 			"targets": {
 				"master": {
@@ -134,9 +134,8 @@
 					"viewId": "detail",
 					"viewLevel": 2
 				},
-			
 				"cart": {
-					"viewName": "Cart",
+					"viewName": "ShoppingCart",
 					"viewLevel": 2
 				},
 				"detailObjectNotFound": {
