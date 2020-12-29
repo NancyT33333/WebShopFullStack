@@ -1,7 +1,8 @@
 sap.ui.define([
 	"ru/teamidea/odatapractice/WebShop/controller/BaseController",
 	"sap/ui/model/json/JSONModel"
-], function (BaseController, JSONModel) {
+
+], function (BaseController, JSONModel ) {
 	"use strict";
 
 	return BaseController.extend("ru.teamidea.odatapractice.WebShop.controller.App", {
@@ -18,9 +19,9 @@ sap.ui.define([
 				itemToSelect: null,
 				addEnabled: false,
 				tempOrder: []
-				
-
+			
 			});
+			oViewModel.setDefaultBindingMode("OneWay");
 			this.setModel(oViewModel, "appView");
 
 			fnSetAppNotBusy = function () {

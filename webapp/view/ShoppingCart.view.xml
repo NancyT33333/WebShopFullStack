@@ -11,11 +11,14 @@
 					</Toolbar>
 				</headerToolbar>
 				<content>
-					<List id="list0" items="{path: 'appView>/tempOrder'}">
+					<List id="list0" items="{path: 'appView>/tempOrder', templateShareable:false}">
 						<items>
-							<InputListItem label="{ProductId}" id="item2">
+							<InputListItem label="{appView>Name}" id="item2">
 								<content>
-									<Input width="100%" id="input0" description="{i18n>quantity}"/>
+									<HBox>
+										<Text class="sapUiSmallMargin" text="{i18n>quantity}"/>
+										<Input class="sapUiSmallMargin" width="100%" id="input0" value="{appView>Quantity}" />
+									</HBox>
 								</content>
 							</InputListItem>
 						</items>

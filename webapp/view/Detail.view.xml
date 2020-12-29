@@ -24,7 +24,7 @@
 			<Button icon="sap-icon://cart" enabled="{= ${appView>/tempOrder}.length > 0 }" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'Cart'\}\}\}" text="{i18n>toCart}"/>
 		</semantic:customHeaderContent>
 		<semantic:customFooterContent>
-			<Button text="{i18n>removeFromCart}"/>
+			<Button text="{i18n>removeFromCart}" press="onPressDelFromCart"/>
 		
 		</semantic:customFooterContent>
 		

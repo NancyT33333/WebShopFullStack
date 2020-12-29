@@ -75,9 +75,59 @@ sap.ui.define([
 		},
 		onGoToShopCart: function () {},
 		onBtnAddToCart: function (oEvt) {
-			// var sQuant = this.getView().byId("input2").getValue(),
-				//sProdId = this.getContext()
+			var sQuant = this.getView().byId("input2").getValue();
+			var sProdId;
+			if (Number(sQuant) > 0) {
+				sProdId = oEvt.getSource().getBindingContext().getPath();
+				var sId = this.parseProductId(sProdId);
+				var aOrders = this.getView().getModel("appView").getProperty("/tempOrder");
+
+				var oProduct = this.getProductFromCache(sId, sProdId); 
+				oProduct.Quantity = Number(sQuant);
+				aOrders = aOrders.filter(function (oProd) { //убираем дубликат продукта
+					return oProd.ProductId != sId;
+				});
+				aOrders = aOrders.concat(oProduct); // добавляем с обновл кол-вом
+				
+				
+				this.getView().getModel("appView").setProperty("/tempOrder", aOrders);
+			}
+			this.getView().byId("input2").setValue(null);
+			MessageToast.show( this.getView().getModel("i18n").getResourceBundle().getText("msgItemAdded"));
 		},
+		parseProductId: function (sProdId) {
+			return sProdId.split("(")[1].split(")")[0];
+		},
+
+		getProductFromCache: function (sId, sProdPath) {
+			var aOrders = this.getView().getModel("appView").getProperty("/tempOrder");
+			var aNeededOrders = aOrders.filter(function (oProd) {
+				return oProd.ProductId === sId;
+			});
+			if (aNeededOrders.length === 0) {
+				return {
+					'ProductId': sId,
+					'Name': this.getModel().getObject(sProdPath).Name,
+					'Quantity': 0
+				};
+			} else {
+				return aNeededOrders[0];
+			}
+		},
+		
+		onPressDelFromCart: function (oEvt) {
+			var sProdId = oEvt.getSource().getBindingContext().getPath();
+			var sId = this.parseProductId(sProdId);
+			var aOrders = this.getView().getModel("appView").getProperty("/tempOrder");
+
+			aOrders = aOrders.filter(function (oProd) { //убираем дубликат продукта
+				return oProd.ProductId != sId;
+			});
+			
+			this.getView().getModel("appView").setProperty("/tempOrder", aOrders);
+			MessageToast.show( this.getView().getModel("i18n").getResourceBundle().getText("msgItemDeleted"));
+		},
+
 		/**
 		 * Event handler for binding change event
 		 * @function
