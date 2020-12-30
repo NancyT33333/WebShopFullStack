@@ -89,8 +89,8 @@ sap.ui.define([
 				});
 				aOrders = aOrders.concat(oProduct); // добавляем с обновл кол-вом
 				
-				
 				this.getView().getModel("appView").setProperty("/tempOrder", aOrders);
+				MessageToast.show( this.getView().getModel("i18n").getResourceBundle().getText("msgItemAdded"));
 			}
 			this.getView().byId("input2").setValue(null);
 			MessageToast.show( this.getView().getModel("i18n").getResourceBundle().getText("msgItemAdded"));
@@ -106,9 +106,10 @@ sap.ui.define([
 			});
 			if (aNeededOrders.length === 0) {
 				return {
-					'ProductId': sId,
-					'Name': this.getModel().getObject(sProdPath).Name,
-					'Quantity': 0
+					"ProductId": sId,
+					"Name": this.getModel().getObject(sProdPath).Name,
+					"Quantity": 0, 
+					"Id": Math.round(Math.random() * 1000000).toString()
 				};
 			} else {
 				return aNeededOrders[0];

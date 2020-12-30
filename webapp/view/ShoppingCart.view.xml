@@ -15,7 +15,7 @@
 						<items>
 							<InputListItem label="{appView>Name}" id="item2">
 								<content>
-									<HBox>
+									<HBox justifyContent="End">
 										<Text class="sapUiSmallMargin" text="{i18n>quantity}"/>
 										<Input class="sapUiSmallMargin" width="100%" id="input0" value="{appView>Quantity}" />
 									</HBox>
@@ -25,7 +25,7 @@
 					</List>
 				</content>
 			</Panel>
-			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel0">
+			<Panel xmlns="sap.m" width="auto" expandable="true" expanded="{appView>/bOrderDetailsExpanded}" id="panel0">
 				<headerToolbar>
 					<Toolbar id="toolbar1">
 						<Title text="{i18n>orderDetails}"/>
@@ -37,14 +37,44 @@
 						<form:formContainers>
 							<form:FormContainer id="container0">
 								<form:formElements>
-									<form:FormElement label="{i18n>custName}" id="element0">
+									<form:FormElement label="{i18n>custSurName}" id="idFECustSurName">
 										<form:fields>
-											<Input width="100%" id="input1"/>
+											<Input width="100%" valueState="{appView>/formValueState/idInpSurName}" id="idInpSurName"/>
 										</form:fields>
 									</form:FormElement>
-									<form:FormElement label="{i18n>custAdress}" id="element1">
+									<form:FormElement label="{i18n>custApartment}" id="idCustApartment">
 										<form:fields>
-											<Input width="100%" id="input2"/>
+											<Input width="100%" valueState="{appView>/formValueState/idInpCustApartment}" id="idInpCustApartment"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custCity}"   id="idCustCity">
+										<form:fields>
+											<Input width="100%" valueState="{appView>/formValueState/idInpCity}" required="true" id="idInpCity"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custStreet}"   id="idCustStreet">
+										<form:fields>
+											<Input width="100%" valueState="{appView>/formValueState/idInpStreet}" required="true" id="idInpStreet"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custBuilding}"  id="idCustBuilding">
+										<form:fields>
+											<Input width="100%" valueState="{appView>/formValueState/idInpCustBuilding}" required="true" id="idInpCustBuilding"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custEmail}" id="idCustEmail">
+										<form:fields>
+											<Input width="100%" valueState="{appView>/formValueState/idInpCustEmail}" id="idInpCustEmail" valueLiveUpdate="true" />
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custFirstname}" id="idCustFirstname">
+										<form:fields>
+											<Input width="100%" valueState="{appView>/formValueState/idInpCustFirstname}" id="idInpCustFirstname"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>custPhone}" id="idCustPhone">
+										<form:fields>
+											<Input width="100%" valueState="{appView>/formValueState/idInpCustPhone}" id="idInpCustPhone"/>
 										</form:fields>
 									</form:FormElement>
 								</form:formElements>
@@ -56,15 +86,15 @@
 					</form:Form>
 					<Bar id="bar4">
 						<contentRight>
-							<Button xmlns="sap.m" id="button1" text="{i18n>btnConfirmOrder}" icon="sap-icon://accept" type="Accept"/>
-							<Button xmlns="sap.m" text="{i18n>btnCancelOrder}" id="button2" type="Reject"/>
+							<Button xmlns="sap.m" id="button1" text="{i18n>btnConfirmOrder}" icon="sap-icon://accept" press="onPressAcceptOrder" type="Accept"/>
+							<Button xmlns="sap.m" text="{i18n>btnCancelOrder}" id="button2" press="onPressRejectOrder" type="Reject"/>
 						</contentRight>
 					</Bar>
 				</content>
 			</Panel>
 		</semantic:content>
 		<semantic:mainAction>
-			<semantic:MainAction id="action1" text="{i18n>btnPostOrder}"/>
+			<semantic:MainAction id="action1" visible="{= !${appView>/bOrderDetailsExpanded}}" press="onCreateOrderPress" text="{i18n>btnPostOrder}"/>
 		</semantic:mainAction>
 	</semantic:DetailPage>
 </mvc:View>

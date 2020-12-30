@@ -18,7 +18,18 @@ sap.ui.define([
 				delay: 0,
 				itemToSelect: null,
 				addEnabled: false,
-				tempOrder: []
+				tempOrder: [],
+				bOrderDetailsExpanded: false,
+				formValueState: {
+					idInpSurName: "None",
+					idInpCustApartment: "None",
+					idInpCity: "None",
+					idInpStreet: "None",
+					idInpCustBuilding: "None",
+					idInpCustEmail: "None",
+					idInpCustPhone: "None",
+					idInpCustFirstname: "None"
+				}
 			
 			});
 			oViewModel.setDefaultBindingMode("OneWay");
