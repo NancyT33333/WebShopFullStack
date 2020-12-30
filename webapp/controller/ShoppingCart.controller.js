@@ -64,6 +64,10 @@ sap.ui.define([
 			this.getView().getModel().create("/Orders", oData, {
 				success: function (oResp ) {
 					MessageToast.show(this.getI18nText("msgPostSuccess"));
+					this.getView().getModel("appView").setProperty("/tempOrder", []);
+					this.clearValueStates();
+					this.onNavToDetail(); 
+					
 				}.bind(this),
 				error: function (oErr) {
 					MessageToast.show(this.getI18nText("msgPostErr"));
