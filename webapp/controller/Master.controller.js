@@ -62,6 +62,7 @@ sap.ui.define([
 			this.getRouter().getRoute("master").attachPatternMatched(this._onMasterMatched, this);
 			this.getRouter().attachBypassed(this.onBypassed, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
+			// this.getView().byId("idImg").setSrc();
 		},
 
 		/* =========================================================== */
@@ -83,6 +84,8 @@ sap.ui.define([
 			this._findItem();
 			this.getModel("appView").setProperty("/addEnabled", true);
 		},
+		
+		
 
 		/**
 		 * Event handler for the master search field. Applies current

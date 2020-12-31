@@ -22,8 +22,16 @@
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem icon="{Picture}" type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Name}"
-						number="{ path: 'Price', formatter: '.formatter.currencyValue' }" numberUnit="{Currency}"></ObjectListItem>
+					<CustomListItem press="onSelectionChange" >
+						<HBox>
+							<Image decorative="false" id="idImg" height="60px" width="60px" src="{path: 'Picture', formatter: '.formatter.decodeBase64' }" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+							<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+								<Label text="{Name}" />
+								<Label text="{ path: 'Price', formatter: '.formatter.currencyValue' }"/>
+								<Label text="{Currency}"/>
+							</VBox>
+						</HBox>
+					</CustomListItem>
 				</items>
 			</List>
 		</semantic:content>
